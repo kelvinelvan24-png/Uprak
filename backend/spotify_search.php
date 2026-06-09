@@ -24,17 +24,19 @@ $q = isset($_GET['q']) ? trim($_GET['q']) : '';
 // ─── Token Caching & Authorization ──────────────────────────
 function getSpotifyAccessToken() {
     $tokenFile = __DIR__ . '/spotify_token.json';
+    $clientId = SPOTIFY_CLIENT_ID;
+    $clientSecret = SPOTIFY_CLIENT_SECRET;
     
     // Check cache
     if (file_exists($tokenFile)) {
         $cache = json_decode(file_get_contents($tokenFile), true);
         if ($cache && isset($cache['access_token']) && isset($cache['expires_at']) && $cache['expires_at'] > time()) {
-            return $cache['access_token'];
+            // Check if credentials match to prevent stale cache after changing credentials
+            if (isset($cache['client_id']) && $cache['client_id'] === $clientId) {
+                return $cache['access_token'];
+            }
         }
     }
-
-    $clientId = SPOTIFY_CLIENT_ID;
-    $clientSecret = SPOTIFY_CLIENT_SECRET;
 
     // Jika credential masih default / kosong, signal fallback ke mock data
     if ($clientId === 'your_spotify_client_id_here' || empty($clientId) || $clientSecret === 'your_spotify_client_secret_here' || empty($clientSecret)) {
@@ -60,6 +62,7 @@ function getSpotifyAccessToken() {
         $data = json_decode($response, true);
         if ($data && isset($data['access_token'])) {
             $data['expires_at'] = time() + ($data['expires_in'] - 60); // buffer 60 detik
+            $data['client_id'] = $clientId; // Save client ID for validation
             file_put_contents($tokenFile, json_encode($data));
             return $data['access_token'];
         }
@@ -182,6 +185,7 @@ if (isset($data['tracks']['items'])) {
             'artist'     => $item['artists'][0]['name'],
             'coverUrl'   => $cover,
             'spotifyUrl' => $item['external_urls']['spotify'],
+            'previewUrl' => isset($item['preview_url']) ? $item['preview_url'] : null,
             'meaning'    => $meaning
         ];
     }

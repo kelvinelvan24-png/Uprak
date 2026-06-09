@@ -98,18 +98,20 @@ if ($songRow) {
     $s_cover   = isset($songDetails['coverUrl']) ? trim($songDetails['coverUrl']) : '';
     $s_meaning = isset($songDetails['meaning']) ? trim($songDetails['meaning']) : 'Lagu ini melambangkan pesan dan perasaan mendalam yang ingin disampaikan.';
     $s_spotify_url = isset($songDetails['spotifyUrl']) ? trim($songDetails['spotifyUrl']) : '';
+    $s_preview_url = isset($songDetails['previewUrl']) ? trim($songDetails['previewUrl']) : null;
 
     $stmtInsertSong = mysqli_prepare($conn,
-        "INSERT INTO songs (spotify_id, title, artist, cover_url, meaning, spotify_url)
-         VALUES (?, ?, ?, ?, ?, ?)"
+        "INSERT INTO songs (spotify_id, title, artist, cover_url, meaning, spotify_url, preview_url)
+         VALUES (?, ?, ?, ?, ?, ?, ?)"
     );
-    mysqli_stmt_bind_param($stmtInsertSong, 'ssssss',
+    mysqli_stmt_bind_param($stmtInsertSong, 'sssssss',
         $songKey,
         $s_title,
         $s_artist,
         $s_cover,
         $s_meaning,
-        $s_spotify_url
+        $s_spotify_url,
+        $s_preview_url
     );
     
     if (mysqli_stmt_execute($stmtInsertSong)) {

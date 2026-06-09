@@ -22,8 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once __DIR__ . '/koneksi.php';
 
 $result = mysqli_query($conn,
-    "SELECT id, spotify_id, title, artist, cover_url, meaning, spotify_url
+    "SELECT id, spotify_id, title, artist, cover_url, meaning, spotify_url, preview_url
      FROM songs
+     WHERE meaning IS NOT NULL AND meaning != ''
      ORDER BY title ASC"
 );
 
@@ -43,7 +44,8 @@ while ($row = mysqli_fetch_assoc($result)) {
         'artist'     => $row['artist'],
         'coverUrl'   => $row['cover_url'],
         'meaning'    => $row['meaning'],
-        'spotifyUrl' => $row['spotify_url']
+        'spotifyUrl' => $row['spotify_url'],
+        'previewUrl' => $row['preview_url']
     ];
 }
 

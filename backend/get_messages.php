@@ -44,7 +44,8 @@ if ($search !== '') {
             s.artist      AS song_artist,
             s.cover_url   AS song_cover,
             s.meaning     AS song_meaning,
-            s.spotify_url AS song_spotify_url
+            s.spotify_url AS song_spotify_url,
+            s.preview_url AS song_preview_url
          FROM messages m
          LEFT JOIN songs s ON m.song_id = s.id
          WHERE LOWER(m.recipient_name) LIKE ?
@@ -67,7 +68,8 @@ if ($search !== '') {
             s.artist      AS song_artist,
             s.cover_url   AS song_cover,
             s.meaning     AS song_meaning,
-            s.spotify_url AS song_spotify_url
+            s.spotify_url AS song_spotify_url,
+            s.preview_url AS song_preview_url
          FROM messages m
          LEFT JOIN songs s ON m.song_id = s.id
          ORDER BY m.created_at DESC"
@@ -89,6 +91,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         'songCover'    => $row['song_cover'],
         'songMeaning'  => $row['song_meaning'],
         'songSpotifyUrl' => $row['song_spotify_url'],
+        'previewUrl'   => $row['song_preview_url'],  // url mp3 preview spotify
         'message'      => $row['message'],
         'images'       => $row['images'],            // path/URL gambar atau null
         'slug'         => $row['slug'],
