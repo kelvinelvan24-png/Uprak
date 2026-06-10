@@ -614,7 +614,7 @@ mysqli_close($conn);
                 <h1>Dashboard Admin</h1>
                 <p style="color: var(--text-secondary); font-size: 0.9rem;">Kelola Lagu, Makna, dan Moderasi Pesan</p>
             </div>
-            <a href="/SFY/" class="btn-back">← Lihat Website Utama</a>
+            <a href="../" class="btn-back">← Lihat Website Utama</a>
         </header>
 
         <!-- Notification Alerts -->
@@ -794,7 +794,7 @@ mysqli_close($conn);
                                         <?php endif; ?>
                                     </td>
                                     <td>
-                                        <a href="/SFY/?s=<?= htmlspecialchars($m['slug']) ?>" target="_blank" style="color: var(--accent-color); font-size: 0.8rem; font-weight: 500;">
+                                        <a href="../?s=<?= htmlspecialchars($m['slug']) ?>" target="_blank" style="color: var(--accent-color); font-size: 0.8rem; font-weight: 500;">
                                             .../?s=<?= htmlspecialchars($m['slug']) ?>
                                         </a>
                                     </td>
