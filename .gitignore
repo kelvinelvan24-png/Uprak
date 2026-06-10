@@ -3,7 +3,5 @@ backend/spotify_token.json
 backend/api.js
 backend/koneksi.php
 backend/tambah_lagu.php
-node_modules/
-.idea/
-*.apk
+Ujian-Praktek//
 uploads/
