@@ -1,0 +1,11 @@
+{
+  "appId": "com.songforyou.app",
+  "appName": "SongForYou",
+  "webDir": "Ujian-Praktek/SongForYou",
+  "server": {
+    "url": "http://10.210.35.124/SVY/Website-SFY/admin/",
+    "androidScheme": "http",
+    "cleartext": true,
+    "allowMixedContent": true
+  }
+}

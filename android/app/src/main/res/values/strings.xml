@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SongForYou</string>
+    <string name="title_activity_main">SongForYou</string>
+    <string name="package_name">com.songforyou.app</string>
+    <string name="custom_url_scheme">com.songforyou.app</string>
+</resources>

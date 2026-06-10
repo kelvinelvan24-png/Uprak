@@ -1,0 +1,27 @@
+{
+  "name": "website-sfy",
+  "version": "1.0.0",
+  "description": "SongForYou Android App",
+  "homepage": "https://github.com/kelvinelvan24-png/Uprak#readme",
+  "bugs": {
+    "url": "https://github.com/kelvinelvan24-png/Uprak/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelvinelvan24-png/Uprak.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.4.0"
+  }
+}
